@@ -16,7 +16,7 @@ pip install -r requirements.txt
 
 ### TODO 
 - [ ] Python script that takes documents as input and OCR them
-- [ ] Convert Text to speech
+- [ ] Convert Text to speech using Coqui TTS
 - [ ] Spellcheck fix 
 - [ ] Convert the documents to different other formats. 
 
