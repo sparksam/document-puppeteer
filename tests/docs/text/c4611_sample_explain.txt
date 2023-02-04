@@ -1,0 +1,182 @@
+w}
+
+ACCELIO.
+
+PDF BOOKMARK SAMPLE
+
+Sample Date: May 2001
+Prepared by: Accelio Present Applied Technology
+
+Created and Tested Using: Accelio Present Central 5.4
+
+Accelio Present Output Designer 5.4
+
+Features Demonstrated: Primary bookmarks in a PDF file.
+
+Secondary bookmarks in a PDF file.
+
+Overview
+
+This sample consists of a simple form containing four distinct fields. The data file contains eight
+separate records.
+
+By default, the data file will produce a PDF file containing eight separate pages. The selective
+use of the bookmark file will produce the same PDF with a separate pane containing
+bookmarks. This screenshot of the sample output shows a PDF file with bookmarks.
+
+Acrobat Reader - [ap_bookmark_pdf]
+
+N@ie6 B[/S Bu «> «eo DORIA ae) 4
+| Bookmarks “AThumbnails S|
+=| |] Invoices by Date =
+
+-~{ } 2000-04-41
+
+ee] 2000-01-2
+
+eed] 2000-01-3
+
+ee] 2000-01-4
+
+-~() 2000-01-5 Date 2000-01-1
+ref] 2000-01-68
+
+-{) 2000-01-7
+teed‘) 2000-01-8
+
+Description Description for item # 1
+Type TYPE
+
+Amount 11.00
+
+The left pane displays the available bookmarks for this PDF. You may need to enable the
+display of bookmarks in Adobe® Acrobat® Reader by clicking Window > Show Bookmarks.
+Selecting a date from the left pane displays the corresponding page within the document.
+
+Note that the index has been sorted according to the specification in the bookmark file, and that
+pages within the file are created according to the original order in the data file.
+
+PDF Bookmark Sample Page 1 of 4
+w}
+
+ACCELIO.
+
+Sample Data File
+
+“reformat trunc
+“symbolset WINLATIN1
+“field trans date
+2000-01-1
+
+“field description
+Description for item #1
+“field trans type
+
+TYPE1
+
+“field trans amount
+11.00
+
+“page 1
+
+“field trans date
+2000-01-2
+
+“field description
+Description for item #2
+“field trans type
+
+TYPE2
+
+“field trans amount
+11.00
+
+“page 1
+
+“field trans date
+2000-01-3
+
+“field description
+Description for item #3
+“field trans type
+
+TYPE3
+
+Sample Bookmark File
+
+[invoices ]
+
+Invoices by Date=0
+trans date=1,A
+
+[type]
+
+Invoices by Item Type=0
+trans type=1,A
+
+[ amount ]
+
+Invoices by Transaction Amount=0
+
+trans amount=1,D
+
+The example bookmark file includes three distinct sections:
+
+e Invoices sorted, ascending, by date.
+
+e Invoices sorted, ascending, by item type.
+
+e Invoices sorted, descending, by transaction amount.
+
+PDF Bookmark Sample
+
+Page 2 of 4
+y)
+
+ACCELIO.
+
+Sample Files
+
+This sample package contains:
+
+Filename |Description
+The template design.
+The template targeted for PDF output.
+
+Deploying the Sample
+To deploy this sample in your environment:
+
+1. Open the template design ap_bookmark.IFD in Output Designer and recompile the
+template for the appropriate presentment target.
+
+2. Modify the -z option in the “job command in the data file ap_bookmark.dat to:
+e Identify the target output device.
+¢ Identify the bookmark file using the -abmk command.
+
+e Identify the section for which to generate bookmarks, if desired, using the -abms
+command.
+
+For example,
+
+Use the command line parameter ...
+-abmkap bookmark.bmk -abmsinvoices
+
+-abmkap bookmark.bmk -abmstype
+-abmkap bookmark.bmk -abmsamount
+
+PDF Bookmark Sample Page 3 of 4
+y)
+
+ACCELIO.
+
+3. Place the accompanying files in directories consistent with your implementation:
+e Place ap_bookmark.IFD in the Designs subdirectory for Output Designer.
+e Place ap_bookmark.mdf in the forms subdirectory accessible to Central.
+
+e Place ap_bookmark.bmk in an addressable directory.
+
+Running the Sample
+
+¢« Torun this sample, place ap_bookmark.dat in the collector directory scanned by Central.
+
+PDF Bookmark Sample Page 4 of 4
