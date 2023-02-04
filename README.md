@@ -1,4 +1,4 @@
-# document-puppeteer
+# Document Puppeteer
 Document Puppeteer is a project that manipulates documents of multiple formats (PDF, Doc, Images, Videos), OCR them, correct the grammar, and probably translate it to other languages. 
 
 ### TODO 
