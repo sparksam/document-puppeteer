@@ -7,11 +7,13 @@ I use an Apple Sillicon Mac for development so here are the instructions used to
 ```bash
 brew install tesseract
 brew install poppler
+arch -arm64e brew install --build-from-source mecab
 git clone github.com/sparksam/document_puppeteer
 cd document_puppeteer
 python3.10 -m venv venv --upgrade-deps
 source venv/bin/activate
-pip install -r requirements.txt
+pip cache purge # Delete cache files from pervious installations
+ARCHFLAGS='-arch arm64' pip install --compile --use-pep517 -r requirements.txt
 ```
 
 ### TODO 
