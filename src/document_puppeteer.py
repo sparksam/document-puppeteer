@@ -7,6 +7,7 @@ from PIL import Image
 import time
 import os
 import shutil
+from TTS.api import TTS as tts
 
 
 def init():
@@ -95,17 +96,37 @@ def save_output(output_file: str, ocr_content: str):
         file.write(ocr_content)
 
 
+def text_to_speech(output_file: str, ocr_content: str):
+    # List available 🐸TTS models and choose the first one
+    tts_models = tts.list_models()
+    print(f"TTS available models: {tts_models}")
+    model_name = 'tts_models/en/ek1/tacotron2'
+    
+    # Init TTS
+    tts_engine = tts(model_name=model_name, progress_bar=True, gpu=False)
+    # Run TTS
+    # ❗ Since this model is multi-speaker and multi-lingual, we must set the target speaker and the language
+    # Text to speech with a numpy output
+    # wav = tts.tts("This is a test! This is also a test!!",
+    #               speaker=tts.speakers[0], language=tts.languages[0])
+    # Text to speech to a file
+    tts_engine.tts_to_file(text="Hello world!",
+                    speaker=tts.speakers[0], language=tts.languages[0], file_path="output.wav")
+
+
 if __name__ == "__main__":
-    # TODO add arguments to pass to CLI
-    # The current values are for testing purposes.
+    # # TODO add arguments to pass to CLI
+    # # The current values are for testing purposes.
 
-    filename = "c4611_sample_explain"
-    out_file = os.sep.join(["tests/docs/text", f"{filename}.txt"])
+    # filename = "c4611_sample_explain"
+    # out_file = os.sep.join(["tests/docs/text", f"{filename}.txt"])
 
-    # out_file = "A17_FlightPlan.pdf"
-    storage_dir, images = pdf_to_images(f"tests/docs/pdfs/{filename}.pdf")
-    ocr_content = convert_images_to_text(
-        storage_dir=storage_dir, images=images)
-    save_output(output_file=out_file, ocr_content=ocr_content)
-    clean_tmp_file(storage_dir=storage_dir)
+    # # out_file = "A17_FlightPlan.pdf"
+    # storage_dir, images = pdf_to_images(f"tests/docs/pdfs/{filename}.pdf")
+    # ocr_content = convert_images_to_text(
+    #     storage_dir=storage_dir, images=images)
+    # save_output(output_file=out_file, ocr_content=ocr_content)
+    # clean_tmp_file(storage_dir=storage_dir)
+    
+    text_to_speech(None,None)
     # pdf_to_images("tests/docs/pdfs/")
