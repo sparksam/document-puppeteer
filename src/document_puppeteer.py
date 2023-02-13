@@ -100,7 +100,8 @@ def text_to_speech(output_file: str, ocr_content: str):
     # List available 🐸TTS models and choose the first one
     tts_models = tts.list_models()
     print(f"TTS available models: {tts_models}")
-    model_name = 'tts_models/en/ek1/tacotron2'
+    # model_name = 'tts_models/en/ek1/tacotron2'
+    model_name = tts_models[0]
     
     # Init TTS
     tts_engine = tts(model_name=model_name, progress_bar=True, gpu=False)
@@ -110,8 +111,8 @@ def text_to_speech(output_file: str, ocr_content: str):
     # wav = tts.tts("This is a test! This is also a test!!",
     #               speaker=tts.speakers[0], language=tts.languages[0])
     # Text to speech to a file
-    tts_engine.tts_to_file(text="Hello world!",
-                    speaker=tts.speakers[0], language=tts.languages[0], file_path="output.wav")
+    # tts_engine.tts_to_file(text="Hello world!",
+    #                 speaker=tts.speakers[0], language=tts.languages[0], file_path="output.wav")
 
 
 if __name__ == "__main__":
